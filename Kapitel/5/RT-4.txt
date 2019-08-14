@@ -1,0 +1,60 @@
+set interfaces ethernet eth0 address 10.5.1.4/24
+set interfaces ethernet eth0 description management
+set interfaces ethernet eth0 duplex auto
+set interfaces ethernet eth0 speed auto
+set interfaces ethernet eth1 address 192.0.2.4/24
+set interfaces ethernet eth1 address '2001:db8:2::4/64'
+set interfaces ethernet eth1 description WAN
+set interfaces ethernet eth1 duplex auto
+set interfaces ethernet eth1 speed auto
+set interfaces ethernet eth2 address 10.2.4.4/24
+set interfaces ethernet eth2 address 'fd00:2:4::4/64'
+set interfaces ethernet eth2 description LAN
+set interfaces ethernet eth2 duplex auto
+set interfaces ethernet eth2 speed auto
+set interfaces ethernet eth3 duplex auto
+set interfaces ethernet eth3 speed auto
+set interfaces ethernet eth4 duplex auto
+set interfaces ethernet eth4 speed auto
+set interfaces loopback lo
+set interfaces switch switch0 mtu 1500
+set interfaces wireguard wg0 address 10.6.3.4/24
+set interfaces wireguard wg0 listen-port 13414
+set interfaces wireguard wg0 mtu 1420
+set interfaces wireguard wg0 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= allowed-ips 10.6.3.1/32,10.1.1.0/24
+set interfaces wireguard wg0 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= description RT-1_ipv4
+set interfaces wireguard wg0 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= endpoint '198.51.100.1:13401'
+set interfaces wireguard wg0 private-key /config/auth/RT-4.key
+set interfaces wireguard wg0 route-allowed-ips true
+set interfaces wireguard wg1 address 'fd00:6:3::4/64'
+set interfaces wireguard wg1 listen-port 13614
+set interfaces wireguard wg1 mtu 1420
+set interfaces wireguard wg1 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= allowed-ips 'fd00:6:3::/64,fd00:1::/64'
+set interfaces wireguard wg1 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= description RT-1_ipv6
+set interfaces wireguard wg1 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= endpoint '[2001:db8:1::1]:13601'
+set interfaces wireguard wg1 private-key /config/auth/RT-4.key
+set interfaces wireguard wg1 route-allowed-ips true
+set policy
+set protocols static interface-route 10.1.1.0/24 next-hop-interface wg0
+set protocols static interface-route6 'fd00:1::/64' next-hop-interface wg1
+set protocols static route 0.0.0.0/0 next-hop 10.5.1.250
+set protocols static route 10.0.0.0/8 next-hop 10.5.1.250
+set protocols static route 198.51.100.0/24 next-hop 192.0.2.6
+set protocols static route6 '2001:db8:1::/64' next-hop '2001:db8:2::6'
+set service gui http-port 80
+set service gui https-port 443
+set service gui older-ciphers enable
+set service lldp management-address 10.5.1.4
+set service ssh port 22
+set service ssh protocol-version v2
+set service ubnt-discover disable
+set system host-name RT-4
+set system login user ubnt authentication encrypted-password '$1$zKNoUbAo$gomzUbYvgyUMcD436Wo66.'
+set system login user ubnt authentication public-keys rsa-key-wireguard key AAAAB3NzaC1yc2EAAAABJQAAAQEAg5ojOtVaLcUQW2zU6LBYvaAuC4w0aIsUezXqG5cGmEsFziQHhxIeHgzLtT61xSbUDAom+6UOCGogvfKvxlH+XX7OyDJKc4ITlniL/Pd6MfKufulYs8rR0MFpMS5WYO6OB+S+NvY4B34BT69yc41FPx8b6JJDUeiK/NSmFaZ48aeE+OXAhNzgTk21mlz+9P/DV6Rxr2qZEw10Ye39MJPsYFTuy0Xr9q5hezEUHausdWU5QVa5zTQwY4ovi/2lsp1RNE6wbC+bKAb56MfkZwrXFvdwfE0uVLl9Ps248F0qUbYk+y2wUR6wXQJv23MC4zf2ee1y4byq4vPNxKDgot+bvQ==
+set system login user ubnt authentication public-keys rsa-key-wireguard type ssh-rsa
+set system login user ubnt level admin
+set system name-server 10.5.1.253
+set system ntp server 10.4.110.4
+set system syslog global facility all level notice
+set system syslog global facility protocols level debug
+set system time-zone Europe/Berlin

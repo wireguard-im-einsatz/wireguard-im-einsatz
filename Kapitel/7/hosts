@@ -1,0 +1,8 @@
+2001:db8:1::1    rt-1 rt1-eth1
+fd00:c:1::a      server-a
+fd00:c:1::b      server-b
+fd00:c:1::1      rt-1
+fd00:6:41::1     rt-1 rt1-wg0
+fd00:6:41::a     rt-a rta-wg0
+fd00:6:42::1     rt-1 rt1-wg1
+fd00:6:42::b     rt-b rtb-wg1
