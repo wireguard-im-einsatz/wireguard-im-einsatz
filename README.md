@@ -1,10 +1,10 @@
-# WireGuard im Einsatz
+# WireGuard im Einsatz (Buch)
 
 VPN-Tunnel sind &uuml;berall. Sie verlaufen zwischen Firmenstandorten, erm&ouml;glichen Fernzugriff auf den heimischen DSL-Router und die meisten Laptops haben einen VPN-Client vorinstalliert.
 
 Die Grundlagen von VPN sind nicht neu: Der Klassiker IPsec entstand vor mehr als zwei Jahrzehnten und besch&uuml;tzt seitdem die Kommunikation seiner Teilnehmer.
 
-__Erh&auml;ltlich ab September 2019 als E-Book oder gedrucktes Buch.__
+__Erh&auml;ltlich seit August 2019 als E-Book oder gedrucktes Buch.__
 
 Ein Blick ins [Inhaltsverzeichnis](Inhaltsverzeichnis.md).
 
@@ -30,7 +30,7 @@ Dieses Buch m&ouml;chte dem Leser den Einstieg erleichtern, die Unterschiede zu 
 
 * Das [Korrekturverzeichnis](errata.pdf) listet die inhaltlichen Fehler und ihre Verbesserung.
 
-* Buch kaufen bei [Amazon](https://www.amazon.de/) oder [BoD](https://www.bod.de/buchshop/)
+* Buch kaufen bei [Amazon](https://www.amazon.de/dp/3749467811) oder [BoD](https://www.bod.de/buchshop/wireguard-im-einsatz-markus-stubbig-9783749467815)
 
 * Kontakt zum Autor per [E-Mail](mailto:wireguard.buch@gmail.com)
 
