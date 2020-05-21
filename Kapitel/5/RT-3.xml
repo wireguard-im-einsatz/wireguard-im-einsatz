@@ -284,7 +284,7 @@
       </scp>
     </backup>
     <firmware>
-      <plugins>os-wireguard-devel,os-vmware</plugins>
+      <plugins>os-vmware,os-wireguard</plugins>
     </firmware>
   </system>
   <interfaces>
@@ -541,8 +541,8 @@
   </widgets>
   <revision>
     <username>root@10.5.1.213</username>
-    <time>1557171724.9626</time>
-    <description>/api/wireguard/client/set made changes</description>
+    <time>1587323349.0655</time>
+    <description>/api/wireguard/server/set made changes</description>
   </revision>
   <cert>
     <refid>5934584bb2aad</refid>
@@ -577,26 +577,6 @@
     <OpenVPNExport version="0.0.1">
       <servers/>
     </OpenVPNExport>
-    <IDS version="1.0.2">
-      <rules/>
-      <userDefinedRules/>
-      <files/>
-      <fileTags/>
-      <general>
-        <enabled>0</enabled>
-        <ips>0</ips>
-        <promisc>0</promisc>
-        <interfaces>wan</interfaces>
-        <homenet>192.168.0.0/16,10.0.0.0/8,172.16.0.0/12</homenet>
-        <defaultPacketSize/>
-        <UpdateCron/>
-        <AlertLogrotate>W0D23</AlertLogrotate>
-        <AlertSaveLogs>4</AlertSaveLogs>
-        <MPMAlgo>ac</MPMAlgo>
-        <syslog>0</syslog>
-        <LogPayload>0</LogPayload>
-      </general>
-    </IDS>
     <monit version="1.0.8">
       <general>
         <enabled>0</enabled>
@@ -884,34 +864,6 @@
       <general version="0.0.1">
         <enabled>1</enabled>
       </general>
-      <server version="0.0.2">
-        <servers>
-          <server uuid="ca07f0f2-2861-446d-80b3-5d7ddbc5a4e7">
-            <enabled>1</enabled>
-            <name>RT3ip4</name>
-            <instance>0</instance>
-            <pubkey>IjSPxIrdQktmcwrXH5uq79zXCp8+hfwu+DKaXJcxHRk=</pubkey>
-            <privkey>iBIO0c6+amJdsy+FWipKpV1s8fRazLlOK4FPKyN90GE=</privkey>
-            <port>13403</port>
-            <dns/>
-            <tunneladdress>10.6.3.3/32</tunneladdress>
-            <disableroutes>0</disableroutes>
-            <peers>c3e293d5-ebe2-4a2d-937a-b786b00fbe65</peers>
-          </server>
-          <server uuid="863b8297-3f84-4cba-9e6f-69ecfa5b5f33">
-            <enabled>1</enabled>
-            <name>RT3ip6</name>
-            <instance>1</instance>
-            <pubkey>IjSPxIrdQktmcwrXH5uq79zXCp8+hfwu+DKaXJcxHRk=</pubkey>
-            <privkey>iBIO0c6+amJdsy+FWipKpV1s8fRazLlOK4FPKyN90GE=</privkey>
-            <port>13603</port>
-            <dns/>
-            <tunneladdress>fd00:6:3::3/128</tunneladdress>
-            <disableroutes>0</disableroutes>
-            <peers>40256869-1fe2-49db-84de-3851ccc0c7e5</peers>
-          </server>
-        </servers>
-      </server>
       <client version="0.0.4">
         <clients>
           <client uuid="c3e293d5-ebe2-4a2d-937a-b786b00fbe65">
@@ -919,13 +871,13 @@
             <name>RT1ipv4</name>
             <pubkey>T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4=</pubkey>
             <psk/>
-            <tunneladdress>10.1.1.0/24,10.6.3.1/32</tunneladdress>
+            <tunneladdress>10.1.1.0/24,10.6.3.1/24</tunneladdress>
             <serveraddress>198.51.100.1</serveraddress>
             <serverport>13401</serverport>
             <keepalive/>
           </client>
           <client uuid="40256869-1fe2-49db-84de-3851ccc0c7e5">
-            <enabled>1</enabled>
+            <enabled>0</enabled>
             <name>RT1ipv6</name>
             <pubkey>T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4=</pubkey>
             <psk/>
@@ -936,7 +888,70 @@
           </client>
         </clients>
       </client>
+      <server version="0.0.2">
+        <servers>
+          <server uuid="ca07f0f2-2861-446d-80b3-5d7ddbc5a4e7">
+            <enabled>1</enabled>
+            <name>RT3ip4</name>
+            <instance>0</instance>
+            <pubkey>IjSPxIrdQktmcwrXH5uq79zXCp8+hfwu+DKaXJcxHRk=</pubkey>
+            <privkey>iBIO0c6+amJdsy+FWipKpV1s8fRazLlOK4FPKyN90GE=</privkey>
+            <port>13403</port>
+            <mtu/>
+            <dns/>
+            <tunneladdress>10.6.3.3/24</tunneladdress>
+            <disableroutes>0</disableroutes>
+            <gateway/>
+            <peers>c3e293d5-ebe2-4a2d-937a-b786b00fbe65</peers>
+          </server>
+          <server uuid="863b8297-3f84-4cba-9e6f-69ecfa5b5f33">
+            <enabled>0</enabled>
+            <name>RT3ip6</name>
+            <instance>1</instance>
+            <pubkey>IjSPxIrdQktmcwrXH5uq79zXCp8+hfwu+DKaXJcxHRk=</pubkey>
+            <privkey>iBIO0c6+amJdsy+FWipKpV1s8fRazLlOK4FPKyN90GE=</privkey>
+            <port>13603</port>
+            <mtu/>
+            <dns/>
+            <tunneladdress>fd00:6:3::3/128</tunneladdress>
+            <disableroutes>0</disableroutes>
+            <gateway/>
+            <peers>40256869-1fe2-49db-84de-3851ccc0c7e5</peers>
+          </server>
+        </servers>
+      </server>
     </wireguard>
+    <IDS version="1.0.3">
+      <rules/>
+      <userDefinedRules/>
+      <files/>
+      <fileTags/>
+      <general>
+        <enabled>0</enabled>
+        <ips>0</ips>
+        <promisc>0</promisc>
+        <interfaces>wan</interfaces>
+        <homenet>192.168.0.0/16,10.0.0.0/8,172.16.0.0/12</homenet>
+        <defaultPacketSize/>
+        <UpdateCron/>
+        <AlertLogrotate>W0D23</AlertLogrotate>
+        <AlertSaveLogs>4</AlertSaveLogs>
+        <MPMAlgo>ac</MPMAlgo>
+        <syslog>0</syslog>
+        <syslog_eve>0</syslog_eve>
+        <LogPayload>0</LogPayload>
+      </general>
+    </IDS>
+    <Syslog version="1.0.0">
+      <general>
+        <enabled>1</enabled>
+      </general>
+      <destinations/>
+    </Syslog>
+    <Interfaces>
+      <vxlans version="1.0.1"/>
+      <loopbacks version="1.0.0"/>
+    </Interfaces>
   </OPNsense>
   <gateways>
     <gateway_item>
