@@ -58,6 +58,7 @@
 * Netzmaske
 * Mehrkern CPU
 * Firewall
+* Verschleierung
 * Zusammenfassung
 
 ## 9. Sicherheit
