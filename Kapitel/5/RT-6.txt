@@ -1,0 +1,43 @@
+set interfaces ethernet eth0 address '10.5.1.6/24'
+set interfaces ethernet eth0 description 'MGMT'
+set interfaces ethernet eth0 hw-id '00:0c:29:99:b0:4c'
+set interfaces ethernet eth1 address '192.0.2.6/24'
+set interfaces ethernet eth1 address '2001:db8:2::6/64'
+set interfaces ethernet eth1 description 'WAN-2'
+set interfaces ethernet eth1 hw-id '00:0c:29:99:b0:56'
+set interfaces ethernet eth2 address '10.2.6.6/24'
+set interfaces ethernet eth2 address 'fd00:2:6::6/64'
+set interfaces ethernet eth2 description 'SITE-2'
+set interfaces ethernet eth2 hw-id '00:0c:29:99:b0:60'
+set interfaces loopback lo
+set interfaces wireguard wg1 address 'fd00:6:3::6/64'
+set interfaces wireguard wg1 peer RT1_ip6 address '2001:db8:1::1'
+set interfaces wireguard wg1 peer RT1_ip6 allowed-ips 'fd00:6:3::/64'
+set interfaces wireguard wg1 peer RT1_ip6 allowed-ips 'fd00:1::/64'
+set interfaces wireguard wg1 peer RT1_ip6 port '13601'
+set interfaces wireguard wg1 peer RT1_ip6 pubkey 'J4czhDyufO23yMEirlidOAmDx9pWQGIXCuK/Io+G7Do='
+set interfaces wireguard wg1 port '13607'
+set protocols static interface-route6 fd00:1::/64 next-hop-interface wg1
+set protocols static route 0.0.0.0/0 next-hop 10.5.1.250
+set protocols static route 198.51.100.0/24 next-hop 192.0.2.9
+set protocols static route6 2001:db8:1::/64 next-hop 2001:db8:2::9
+set service ssh listen-address '10.5.1.6'
+set system config-management commit-revisions '100'
+set system conntrack modules ftp
+set system conntrack modules h323
+set system conntrack modules nfs
+set system conntrack modules pptp
+set system conntrack modules sip
+set system conntrack modules sqlnet
+set system conntrack modules tftp
+set system console
+set system host-name 'RT-6'
+set system login user vyos authentication encrypted-password '$6$fAGDb5vdL2rTIx.Q$fo1GAPPgvaFYtg.7luzqw7ha8iHSmoDfvD8XzI0P1TUHDE.794TDKoYlCgNllMa8n2CuOOZE1xUSamOxo7H2s/'
+set system login user vyos authentication plaintext-password ''
+set system login user vyos authentication public-keys rsa-key-wireguard key 'AAAAB3NzaC1yc2EAAAABJQAAAQEAg5ojOtVaLcUQW2zU6LBYvaAuC4w0aIsUezXqG5cGmEsFziQHhxIeHgzLtT61xSbUDAom+6UOCGogvfKvxlH+XX7OyDJKc4ITlniL/Pd6MfKufulYs8rR0MFpMS5WYO6OB+S+NvY4B34BT69yc41FPx8b6JJDUeiK/NSmFaZ48aeE+OXAhNzgTk21mlz+9P/DV6Rxr2qZEw10Ye39MJPsYFTuy0Xr9q5hezEUHausdWU5QVa5zTQwY4ovi/2lsp1RNE6wbC+bKAb56MfkZwrXFvdwfE0uVLl9Ps248F0qUbYk+y2wUR6wXQJv23MC4zf2ee1y4byq4vPNxKDgot+bvQ=='
+set system login user vyos authentication public-keys rsa-key-wireguard type 'ssh-rsa'
+set system ntp server time1.vyos.net
+set system ntp server time2.vyos.net
+set system ntp server time3.vyos.net
+set system syslog global facility all level 'info'
+set system syslog global facility protocols level 'debug'
