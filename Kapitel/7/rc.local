@@ -1,43 +1,46 @@
-ip netns add customer-a
-ip netns add customer-b
+ip netns add kunde-a
+ip netns add kunde-b
+
+alias kunde-a="ip netns exec kunde-a"
+alias kunde-b="ip netns exec kunde-b"
 
 ip link add dev wg0 type wireguard
 ip link add dev wg1 type wireguard
 
-ip link set wg0 netns customer-a
-ip link set wg1 netns customer-b
+ip link set wg0 netns kunde-a
+ip link set wg1 netns kunde-b
 
-ip netns exec customer-a sysctl -w net.ipv6.conf.all.forwarding=1
-ip netns exec customer-b sysctl -w net.ipv6.conf.all.forwarding=1
+ip netns exec kunde-a sysctl -w net.ipv6.conf.all.forwarding=1
+ip netns exec kunde-b sysctl -w net.ipv6.conf.all.forwarding=1
 
 
-ip netns exec customer-a ip address add dev wg0 fd00:6:41::1/64
-ip netns exec customer-a wg set wg0 listen-port 13641 private-key /root/rt1.key
-ip netns exec customer-a wg set wg0 \
-  peer Q2sctbQRll5MU2H8HBbxWTWb4RaUz/b503M644l+52E= \
+ip netns exec kunde-a ip address add dev wg0 fd00:6:41::1/64
+ip netns exec kunde-a wg set wg0 listen-port 13641 private-key /root/rt1.key
+ip netns exec kunde-a wg set wg0 \
+  peer 2dB1OEvveApl24BsFa7QQoEzS+vhn4e9EyLTH8vsskY= \
   endpoint [2001:db8:1::a]:13641 \
   allowed-ips fd00:c:2::/64,fd00:6:41::/64
 
-ip netns exec customer-a ip link set wg0 up
-ip netns exec customer-a route -6 add fd00:c:2::/64 dev wg0
-ip netns exec customer-a route -6 add fd00:6:41::/64 dev wg0
+ip netns exec kunde-a ip link set wg0 up
+ip netns exec kunde-a route -6 add fd00:c:2::/64 dev wg0
+ip netns exec kunde-a route -6 add fd00:6:41::/64 dev wg0
 
-ip link set eth3 netns customer-a
-ip netns exec customer-a ip link set eth3 up
-ip netns exec customer-a ip address add dev eth3 fd00:c:1::1/64
+ip link set eth3 netns kunde-a
+ip netns exec kunde-a ip link set eth3 up
+ip netns exec kunde-a ip address add dev eth3 fd00:c:1::1/64
 
 
-ip netns exec customer-b ip address add dev wg1 fd00:6:42::1/64
-ip netns exec customer-b wg set wg1 listen-port 13642 private-key /root/rt1.key
-ip netns exec customer-b wg set wg1 \
-  peer ieTuro7tQ3rdIqFmvot3arHaEGUir/izK02X4n1msjs= \
+ip netns exec kunde-b ip address add dev wg1 fd00:6:42::1/64
+ip netns exec kunde-b wg set wg1 listen-port 13642 private-key /root/rt1.key
+ip netns exec kunde-b wg set wg1 \
+  peer TbR9UmHd16WbHezGdILuxDRXU7tqB6LaVFeENs3STH0= \
   endpoint [2001:db8:1::b]:13642 \
   allowed-ips fd00:c:2::/64,fd00:6:42::/64
 
-ip netns exec customer-b ip link set wg1 up
-ip netns exec customer-b route -6 add fd00:c:2::/64 dev wg1
-ip netns exec customer-b route -6 add fd00:6:42::/64 dev wg1
+ip netns exec kunde-b ip link set wg1 up
+ip netns exec kunde-b route -6 add fd00:c:2::/64 dev wg1
+ip netns exec kunde-b route -6 add fd00:6:42::/64 dev wg1
 
-ip link set eth2 netns customer-b
-ip netns exec customer-b ip link set eth2 up
-ip netns exec customer-b ip address add dev eth2 fd00:c:1::1/64
+ip link set eth2 netns kunde-b
+ip netns exec kunde-b ip link set eth2 up
+ip netns exec kunde-b ip address add dev eth2 fd00:c:1::1/64
