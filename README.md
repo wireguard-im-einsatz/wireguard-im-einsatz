@@ -4,7 +4,7 @@ VPN-Tunnel sind &uuml;berall. Sie verlaufen zwischen Firmenstandorten, erm&ouml;
 
 Die Grundlagen von VPN sind nicht neu: Der Klassiker IPsec entstand vor mehr als zwei Jahrzehnten und besch&uuml;tzt seitdem die Kommunikation seiner Teilnehmer.
 
-__Erh&auml;ltlich seit August 2019 als E-Book oder gedrucktes Buch. Die dritte Auflage erscheint im Februar 2023.__
+__Die dritte Auflage ist erh&auml;ltlich seit Februar 2023 als E-Book und gedrucktes Buch.__
 
 Ein Blick ins [Inhaltsverzeichnis](Inhaltsverzeichnis.md).
 
