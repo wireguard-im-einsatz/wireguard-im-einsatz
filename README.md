@@ -30,7 +30,7 @@ Dieses Buch m&ouml;chte dem Leser den Einstieg erleichtern, die Unterschiede zu 
 
 * Das [Korrekturverzeichnis](errata.pdf) listet die inhaltlichen Fehler und ihre Verbesserung.
 
-* Buch kaufen bei [Amazon](https://amzn.to/3Zb4Mx6) (Affiliate-Link) oder [BoD](https://www.bod.de/buchshop/wireguard-im-einsatz-markus-stubbig-9783751935746)
+* Buch kaufen bei [Amazon](https://amzn.to/3Zb4Mx6) (Affiliate-Link) oder [BoD](https://buchshop.bod.de/wireguard-im-einsatz-markus-stubbig-9783757802424)
 
 * Kontakt zum Autor per [E-Mail](mailto:wireguard.buch@gmail.com)
 
