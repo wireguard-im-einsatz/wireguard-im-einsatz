@@ -4,7 +4,7 @@ VPN-Tunnel sind &uuml;berall. Sie verlaufen zwischen Firmenstandorten, erm&ouml;
 
 Die Grundlagen von VPN sind nicht neu: Der Klassiker IPsec entstand vor mehr als zwei Jahrzehnten und besch&uuml;tzt seitdem die Kommunikation seiner Teilnehmer.
 
-__Erhältlich seit Februar 2023 als E-Book und gedrucktes Buch. Die vierte Auflage erscheint im Juni 2025.__
+__Erhältlich seit Mai 2025 als E-Book und gedrucktes Buch.__
 
 Ein Blick ins [Inhaltsverzeichnis](Inhaltsverzeichnis.md).
 
@@ -30,7 +30,7 @@ Dieses Buch m&ouml;chte dem Leser den Einstieg erleichtern, die Unterschiede zu 
 
 * Das [Korrekturverzeichnis](errata.pdf) listet die inhaltlichen Fehler und ihre Verbesserung.
 
-* Buch kaufen bei [Amazon](https://amzn.to/3Zb4Mx6) (Affiliate-Link) oder [BoD](https://buchshop.bod.de/wireguard-im-einsatz-markus-stubbig-9783757802424)
+* Buch kaufen bei [Amazon](https://amzn.to/43S9vHv) (Affiliate-Link) oder [BoD](https://buchshop.bod.de/wireguard-im-einsatz-markus-stubbig-9783819266133)
 
 * Kontakt zum Autor per [E-Mail](mailto:wireguard.buch@gmail.com)
 
