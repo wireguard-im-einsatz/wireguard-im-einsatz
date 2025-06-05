@@ -1,34 +1,37 @@
 set interfaces ethernet eth0 address 10.5.1.4/24
-set interfaces ethernet eth0 description management
 set interfaces ethernet eth0 duplex auto
 set interfaces ethernet eth0 speed auto
 set interfaces ethernet eth1 address 192.0.2.4/24
 set interfaces ethernet eth1 address '2001:db8:2::4/64'
-set interfaces ethernet eth1 description WAN
+set interfaces ethernet eth1 description WAN-2
 set interfaces ethernet eth1 duplex auto
 set interfaces ethernet eth1 speed auto
 set interfaces ethernet eth2 address 10.2.4.4/24
 set interfaces ethernet eth2 address 'fd00:2:4::4/64'
-set interfaces ethernet eth2 description LAN
+set interfaces ethernet eth2 description SITE-2
 set interfaces ethernet eth2 duplex auto
 set interfaces ethernet eth2 speed auto
+set interfaces ethernet eth3 address dhcp
 set interfaces ethernet eth3 duplex auto
 set interfaces ethernet eth3 speed auto
+set interfaces ethernet eth4 address dhcp
 set interfaces ethernet eth4 duplex auto
-set interfaces ethernet eth4 poe output off
+set interfaces ethernet eth4 poe output pthru
 set interfaces ethernet eth4 speed auto
 set interfaces loopback lo
 set interfaces switch switch0 mtu 1500
+set interfaces switch switch0 switch-port vlan-aware disable
 set interfaces wireguard wg0 address 10.6.3.4/24
-set interfaces wireguard wg0 listen-port 13414
+set interfaces wireguard wg0 listen-port 13404
 set interfaces wireguard wg0 mtu 1420
-set interfaces wireguard wg0 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= allowed-ips 10.6.3.1/32,10.1.1.0/24
+set interfaces wireguard wg0 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= allowed-ips 10.6.3.1/32
+set interfaces wireguard wg0 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= allowed-ips 10.1.1.0/24
 set interfaces wireguard wg0 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= description RT-1_ipv4
 set interfaces wireguard wg0 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= endpoint '198.51.100.1:13401'
-set interfaces wireguard wg0 private-key /config/auth/RT-4.key
+set interfaces wireguard wg0 private-key wDmH9tZx79DxAUJUbuxUVr87nAL4X1hCfWzYK8WYKVA=
 set interfaces wireguard wg0 route-allowed-ips true
 set interfaces wireguard wg1 address 'fd00:6:3::4/64'
-set interfaces wireguard wg1 listen-port 13614
+set interfaces wireguard wg1 listen-port 13604
 set interfaces wireguard wg1 mtu 1420
 set interfaces wireguard wg1 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= allowed-ips 'fd00:6:3::/64,fd00:1::/64'
 set interfaces wireguard wg1 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= description RT-1_ipv6
@@ -36,23 +39,26 @@ set interfaces wireguard wg1 peer T2Am2B5D5scgc9uZME3gwLKqGnr8/fL32QtxZwoexj4= e
 set interfaces wireguard wg1 private-key /config/auth/RT-4.key
 set interfaces wireguard wg1 route-allowed-ips true
 set protocols static route 0.0.0.0/0 next-hop 10.5.1.250
-set protocols static route 198.51.100.0/24 next-hop 192.0.2.6
-set protocols static route6 '2001:db8:1::/64' next-hop '2001:db8:2::6'
+set protocols static route 198.51.100.0/24 next-hop 192.0.2.9 description WAN-1
+set protocols static route6 '2001:db8:1::/64' next-hop '2001:db8:2::9'
+set protocols static table 100
 set service gui http-port 80
 set service gui https-port 443
 set service gui older-ciphers enable
-set service lldp management-address 10.5.1.4
 set service ssh port 22
 set service ssh protocol-version v2
 set service ubnt-discover disable
 set service unms disable
-set system gateway-address 10.5.1.250
+set system analytics-handler send-analytics-report false
+set system crash-handler send-crash-report false
 set system host-name RT-4
-set system login user ubnt authentication encrypted-password '$1$zKNoUbAo$gomzUbYvgyUMcD436Wo66.'
+set system login user ubnt authentication encrypted-password '$6$VSfwU7h1db/it$f//R30Qdqux.KNT6ISfTlxcWrBT9yZ.bYdDK79iL7HUkoNGSBke/oYxhn/2R5XZ0XRj9g5oubYiUh/4EmcaE3/'
+set system login user ubnt authentication plaintext-password ''
 set system login user ubnt authentication public-keys rsa-key-wireguard key AAAAB3NzaC1yc2EAAAABJQAAAQEAg5ojOtVaLcUQW2zU6LBYvaAuC4w0aIsUezXqG5cGmEsFziQHhxIeHgzLtT61xSbUDAom+6UOCGogvfKvxlH+XX7OyDJKc4ITlniL/Pd6MfKufulYs8rR0MFpMS5WYO6OB+S+NvY4B34BT69yc41FPx8b6JJDUeiK/NSmFaZ48aeE+OXAhNzgTk21mlz+9P/DV6Rxr2qZEw10Ye39MJPsYFTuy0Xr9q5hezEUHausdWU5QVa5zTQwY4ovi/2lsp1RNE6wbC+bKAb56MfkZwrXFvdwfE0uVLl9Ps248F0qUbYk+y2wUR6wXQJv23MC4zf2ee1y4byq4vPNxKDgot+bvQ==
 set system login user ubnt authentication public-keys rsa-key-wireguard type ssh-rsa
+set system login user ubnt full-name ''
 set system login user ubnt level admin
-set system name-server 10.5.1.250
+set system name-server 192.168.1.53
 set system ntp server 0.ubnt.pool.ntp.org
 set system ntp server 1.ubnt.pool.ntp.org
 set system ntp server 2.ubnt.pool.ntp.org
